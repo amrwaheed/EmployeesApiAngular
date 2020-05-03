@@ -1,0 +1,52 @@
+{
+  "Employees": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "email": "Sincere@april.biz",
+      "phone": "01203266911",
+      "password": "123456789",
+      "imageUrl": "https://i.picsum.photos/id/37/200/200.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "password": "123456789",
+      "email": "Shanna@melissa.tv",
+      "phone": "01203266911",
+      "imageUrl": "https://i.picsum.photos/id/38/200/200.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "password": "123456789",
+      "email": "Nathan@yesenia.net",
+      "phone": "01203266911",
+      "imageUrl": "https://i.picsum.photos/id/317/200/200.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "password": "123456789",
+      "email": "Julianne.OConner@kory.org",
+      "phone": "01203266911",
+      "imageUrl": "https://i.picsum.photos/id/40/200/200.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "email": "Lucio_Hettinger@annie.ca",
+      "phone": "01203266911",
+      "password": "123456789",
+      "imageUrl": "https://i.picsum.photos/id/17/200/200.jpg"
+    },
+    {
+      "id": 57,
+      "name": "amr",
+      "email": "asdasdasf@das.com",
+      "phone": "01095202651",
+      "password": "123456789",
+      "imageUrl": "https://i.picsum.photos/id/57/200/200.jpg"
+    }
+  ]
+}
