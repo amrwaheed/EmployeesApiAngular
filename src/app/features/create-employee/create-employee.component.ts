@@ -73,7 +73,8 @@ export class CreateEmployeeComponent implements OnInit {
     this.form.get('imageUrl').updateValueAndValidity() // when change image value will be updated
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = (reader.result as string); // url
+      this.imagePreview = (reader.result as string); // url string base64
+     
     }
 
     reader.readAsDataURL(file); // preview url 
@@ -88,20 +89,21 @@ export class CreateEmployeeComponent implements OnInit {
     if (this.mode === 'create') {
       let random = Math.round(Math.max(Math.random()*8)*12);
       this.form.value.id = random;
-      this.form.value.imageUrl = `https://i.picsum.photos/id/${random}/200/200.jpg`;
+      this.form.value.imageUrl = this.imagePreview;
 
         this.employeeServices.create_new_employee(this.form.value).subscribe(
           (data) =>{
-            console.log(data)
+       
             this.toastr.success('Employee Added Successfully', 'Add Employee');
             this.router.navigate(['/employees'])
           }
         )
     }else{
+      this.form.value.imageUrl = this.imagePreview;
 
       this.employeeServices.update_employee(this.form.value).subscribe(
         (data) =>{
-          console.log(data)
+      
           this.toastr.success('Employee Updated Successfully', 'Update Employee');
           this.router.navigate(['/employees'])
         }

@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="col-12">
-    <table mdbTable striped="true" class="text-center mt-5"  *ngIf="!isLoading">
+    <table mdbTable striped="true" class="text-center mt-5 table-responsive-sm table-responsive-md table-responsive-lg"  *ngIf="!isLoading">
       <thead>
         <tr>
           <th scope="col">id </th>
@@ -28,7 +28,7 @@
           <td>{{employee.phone}}</td>
           <!-- <td>{{employee.imageUrl}}</td> -->
           <td><img [src]="employee.imageUrl" alt="" srcset=""></td>
-          <td><a [routerLink]="['/employees',employee.id,'edit' ]"  class="btn btn-outline-primary  btn-sm">Edit</a></td>
+          <td><a [routerLink]="['/employees',employee.id,'edit']"  class="btn btn-outline-primary  btn-sm">Edit</a></td>
           <td><button mdbBtn type="button" color="danger" rounded="true" outline="true"  size="sm" (click)="onDelete(employee.id, i)"  mdbWavesEffect>Delete</button>
           </td>
         </tr>
