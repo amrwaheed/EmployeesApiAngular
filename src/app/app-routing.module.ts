@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { EmoployeesComponent } from './features/emoployees/emoployees.component';
-import { CreateEmployeeComponent } from './features/create-employee/create-employee.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { HomeComponent } from './core/home/home.component';
+import { AuthGuard } from './features/auth/auth.guard';
 
 
 const routes: Routes = [
-  { path: "", redirectTo: "employees", pathMatch: 'full' },
-  { path: "employees", component: EmoployeesComponent },
-  { path: "create", component: CreateEmployeeComponent },
-  { path: "employees/:id/edit", component: CreateEmployeeComponent },
-
+  { path: "", redirectTo: "home", pathMatch: 'full' },
+  { path: "home", component:HomeComponent },
+  {
+    path: "employees",
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./features/emplyees/emplyees.module').then(m => m.EmplyeesModule)
+  },
+  {
+    path: "login",
+    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy:PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

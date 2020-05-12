@@ -1,0 +1,40 @@
+
+<div class="row">
+  <div class="col-6 offset-3 mt-5 text-center" *ngIf="isLoading">
+    <div class="spinner-border " role="status" >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="col-12">
+    <table mdbTable striped="true" class="text-center mt-5 table-responsive-sm table-responsive-md table-responsive-lg"  *ngIf="!isLoading">
+      <thead>
+        <tr>
+          <th scope="col">id </th>
+          <th scope="col">name </th>
+          <th scope="col">password </th>
+          <th scope="col">email </th>
+          <th scope="col">phone </th>
+          <th scope="col">image </th>
+          <th scope="col">Edit </th>
+          <th scope="col">Delete </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let employee of employees;let i=index">
+          <th scope="row">{{employee.id}}</th>
+          <td>{{employee.name}}</td>
+          <td>{{employee.password}}</td>
+          <td>{{employee.email}}</td>
+          <td>{{employee.phone}}</td>
+          <!-- <td>{{employee.imageUrl}}</td> -->
+          <td><img [src]="employee.imageUrl" alt="" srcset=""></td>
+          <td><a [routerLink]="['/employees',employee.id,'edit']"  class="btn btn-outline-primary  btn-sm">Edit</a></td>
+          <td><button mdbBtn type="button" color="danger" rounded="true" outline="true"  size="sm" (click)="onDelete(employee.id, i)"  mdbWavesEffect>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  

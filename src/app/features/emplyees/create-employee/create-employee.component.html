@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-sm-6 col-md-8 col-lg-6  offset-sm-3 offset-md-2 offset-lg-3 mt-5">
+    <!-- Material form contact -->
+    <mdb-card>
+      <mdb-card-header class="info-color white-text text-center py-4">
+        <h5>
+          <strong>{{mode =='create' ? 'Add New' : 'Update'}} Employee</strong>
+        </h5>
+      </mdb-card-header>
+
+
+      <!--Card content-->
+      <mdb-card-body class="px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" [formGroup]="form" (submit)="onSaveEmployee()">
+
+          <!-- Name -->
+          <div class="md-form mt-3">
+            <input type="text" id="materialContactFormName" class="form-control" formControlName="name" mdbValidate
+              mdbInput>
+            <label for="materialContactFormName">Name</label>
+            <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+              {{name.errors?.required ? "required field": ""}}</mdb-error>
+            <mdb-success *ngIf="name.valid && (name.dirty || name.touched)"></mdb-success>
+          </div>
+
+          <!-- Password -->
+          <div class="md-form mt-3">
+            <input type="password" id="materialContactFormpassword" class="form-control" formControlName="password"
+              mdbValidate mdbInput>
+            <label for="materialContactFormpassword">Password</label>
+            <mdb-error *ngIf="password.invalid && (password.dirty || password.touched)">
+              {{password.errors?.required ? "required field": ""}}
+              {{password.errors?.minlength ? " your password must min " + password.errors.minlength.requiredLength : ""}}
+            </mdb-error>
+            <mdb-success *ngIf="password.valid && (password.dirty || password.touched)"></mdb-success>
+          </div>
+
+          <!-- E-mail -->
+          <div class="md-form">
+            <input type="email" id="materialContactFormEmail" class="form-control" formControlName="email" mdbValidate
+              mdbInput>
+            <label for="materialContactFormEmail">E-mail</label>
+            <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+              {{email.errors?.required ? "required field": ""}}</mdb-error>
+            <mdb-success *ngIf="email.valid && (email.dirty || email.touched)"></mdb-success>
+          </div>
+
+          <!-- Phone -->
+          <div class="md-form">
+            <input type="text" id="materialContactFormphone" class="form-control" formControlName="phone" mdbValidate
+              mdbInput>
+            <label for="materialContactFormphone">Phone</label>
+            <mdb-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+              {{phone.errors?.required ? "required in":""}}
+              {{phone.errors?.minlength ? "your number must min" + phone.errors.minlength.requiredLength : ""}}
+              {{phone.errors?.maxlength ? "your number must max" + phone.errors.maxlength.requiredLength : ""}}
+              {{phone.errors?.pattern ? "must be number only" : ""}}
+            </mdb-error>
+            <mdb-success *ngIf="phone.valid && (phone.dirty || phone.touched)"></mdb-success>
+          </div>
+
+          <!-- FIle -->
+          <div class="md-form">
+            <input type="file" id="materialFile" class="form-control" (change)="onImagePicked($event)" mdbValidate
+              mdbInput accept='image/*'>
+            <label for="materialFile">Image</label>
+            <img [src]="imagePreview" *ngIf="imagePreview !== '' && imagePreview && form.get('imageUrl').valid">
+          </div>
+
+          <!-- Send button -->
+          <button mdbBtn color="info" outline="true" rounded="true" block="true" class="z-depth-0 my-4 waves-effect"
+            mdbWavesEffect type="submit">{{mode =='create' ? 'Save' : 'Update'}}</button>
+
+        </form>
+        <!-- Form -->
+
+      </mdb-card-body>
+
+    </mdb-card>
+    <!-- Material form contact -->
+
+  </div>
+</div>
